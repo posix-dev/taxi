@@ -35,7 +35,8 @@ const useStyles = createStyles({
 });
 
 interface LoginProps {
-    classes: any
+    classes: any,
+    navigate: (page: string) => void
 }
 
 interface LoginState {
@@ -52,6 +53,12 @@ class Login extends React.Component<LoginProps, LoginState> {
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleRouteToRegistration = this.handleRouteToRegistration.bind(this);
+    }
+
+    handleRouteToRegistration(e: SyntheticEvent) {
+        e.preventDefault();
+        this.props.navigate("registration");
     }
 
     handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
@@ -64,7 +71,7 @@ class Login extends React.Component<LoginProps, LoginState> {
 
     handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
-        //todo
+        this.props.navigate("map");
     }
 
     render(): React.ReactElement {
@@ -94,6 +101,7 @@ class Login extends React.Component<LoginProps, LoginState> {
                                     Новый пользователь?&nbsp;
                                     <Link
                                         className={classes.loginRegistrationLink}
+                                        onClick={this.handleRouteToRegistration}
                                         href="#">Зарегистрируйтесь</Link>
                                 </Box>
                             </Typography>

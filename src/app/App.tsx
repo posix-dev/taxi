@@ -38,8 +38,7 @@ class App extends React.Component {
             <MuiThemeProvider theme={theme}>
                 <main>
                     <section>
-                        {/*<Page navigate={this.navigateTo}/>*/}
-                        <Registration/>
+                        <Page navigate={this.navigateTo}/>
                     </section>
                 </main>
             </MuiThemeProvider>
