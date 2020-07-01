@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+      "experimentalDecorators": true,
     "target": "es5",
     "lib": [
+      "ES6",
       "dom",
       "dom.iterable",
       "esnext"
@@ -17,6 +19,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "jsx": "react"
   },
   "include": [
