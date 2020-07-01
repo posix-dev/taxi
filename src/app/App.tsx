@@ -7,6 +7,7 @@ import yellow from "@material-ui/core/colors/yellow";
 import grey from "@material-ui/core/colors/grey";
 import Registration from "../registration/Registration";
 import Profile from "../profile/Profile";
+import {NavigateProvider} from "./NavigateContext"
 
 const PAGES: any = {
     login: Login,
@@ -38,7 +39,9 @@ class App extends React.Component {
             <MuiThemeProvider theme={theme}>
                 <main>
                     <section>
-                        <Page navigate={this.navigateTo}/>
+                        <NavigateProvider value={{navigate: this.navigateTo}} >
+                            <Page/>
+                        </NavigateProvider>
                     </section>
                 </main>
             </MuiThemeProvider>

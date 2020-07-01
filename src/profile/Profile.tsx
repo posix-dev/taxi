@@ -14,7 +14,7 @@ class Profile extends React.Component<ProfileProps, ProfileState> {
     render(): React.ReactElement {
         return (
             <div>
-                <Header navigate={this.props.navigate}/>
+                <Header />
                 Profile
             </div>
         );
