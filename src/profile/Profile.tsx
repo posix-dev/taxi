@@ -2,7 +2,6 @@ import React from 'react';
 import Header from "../header/Header";
 
 interface ProfileProps {
-    navigate: (page: string) => void
 }
 
 interface ProfileState {

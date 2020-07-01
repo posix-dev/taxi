@@ -8,6 +8,7 @@ import grey from "@material-ui/core/colors/grey";
 import Registration from "../registration/Registration";
 import Profile from "../profile/Profile";
 import {NavigateProvider} from "./NavigateContext"
+import {AuthProvider} from "./AuthProvider"
 
 const PAGES: any = {
     login: Login,
@@ -25,11 +26,21 @@ const theme = createMuiTheme({
     },
 });
 
-class App extends React.Component {
-    state = {currentPage: "map"};
+class App extends React.PureComponent {
+    state = {currentPage: "login", isLoggedIn: false};
 
     navigateTo = (page: String) => {
-        this.setState({currentPage: page})
+        this.setState({currentPage: page});
+    };
+
+    login = (email: String, password: String) => {
+        this.navigateTo("map");
+        this.setState({isLoggedIn: true});
+    };
+
+    logout = () => {
+        this.setState({isLoggedIn: false});
+        this.navigateTo("login");
     };
 
     render(): React.ReactElement {
@@ -39,8 +50,14 @@ class App extends React.Component {
             <MuiThemeProvider theme={theme}>
                 <main>
                     <section>
-                        <NavigateProvider value={{navigate: this.navigateTo}} >
-                            <Page/>
+                        <NavigateProvider value={{navigate: this.navigateTo}}>
+                            <AuthProvider value={{
+                                logout: this.logout,
+                                login: this.login,
+                                isLoggedIn: this.state.isLoggedIn
+                            }}>
+                                <Page/>
+                            </AuthProvider>
                         </NavigateProvider>
                     </section>
                 </main>
