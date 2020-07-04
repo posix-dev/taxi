@@ -1,6 +1,6 @@
-import {createStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 
-export const useStyles = createStyles({
+export const useStyles = makeStyles({
     headerNav: {
         boxShadow: "0 0.2rem 0.2rem -0.1rem rgba(128, 128, 128, 0.44)"
     },

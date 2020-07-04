@@ -17,7 +17,7 @@ const defaultState = {
     defZoom: 15
 };
 
-const Map: React.FC<MapProps> = React.memo(function Map() {
+const Map: React.FC<MapProps> = () => {
     const [mapState, setMapState] = useState(defaultState);
     const classes = useStyles();
     const mapContainer: React.RefObject<HTMLDivElement> = useRef(null);
@@ -41,6 +41,6 @@ const Map: React.FC<MapProps> = React.memo(function Map() {
             <div className={classes.mapWrapper} ref={mapContainer}/>
         </div>
     );
-});
+};
 
 export default Map;
