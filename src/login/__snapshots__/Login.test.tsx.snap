@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login init renders correctly 1`] = `
+exports[`Login init renders correctly snapshot test passed 1`] = `
 <div
   className="MuiGrid-root Login-loginFormWrapper-1 MuiGrid-container"
 >

@@ -64,7 +64,7 @@ class Registration extends React.Component<RegistrationProps, RegistrationState>
 
         return (
             <NavigateConsumer>
-                {() => (
+                {navigator => (
                     <AuthConsumer>
                         {auth => (
                             <Grid className={classes.registrationWrapper} container>

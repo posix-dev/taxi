@@ -4,26 +4,29 @@ import {render, cleanup, fireEvent, getAllByTestId} from '@testing-library/react
 import Login from './Login';
 
 describe('Login', () => {
-    describe('init', () => {
-        const {getByTestId, getByText} = render(<Login/>);
+    const {getByTestId, getByText} = render(<Login/>);
+    describe('init renders correctly', () => {
 
-        it('email input should display default value', () => {
-            expect(getByTestId('login')).toHaveTextContent("Имя пользователя");
-        });
-        it('password input should display default value', () => {
-            expect(getByTestId('myPassword')).toHaveTextContent("Пароль");
-        });
-        it('submit button is exist', () => {
-            expect(getByTestId('loginSubmit')).toBeTruthy();
-        });
-        it('submit button has testId', () => {
-            expect(getByTestId('loginSubmit')).toHaveAttribute("data-testid");
-        });
-        it('renders correctly', () => {
+        expect(getByTestId('login')).toHaveTextContent("Имя пользователя");
+        expect(getByTestId('myPassword')).toHaveTextContent("Пароль");
+        expect(getByTestId('loginSubmit')).toBeTruthy();
+        expect(getByTestId('loginSubmit')).toHaveAttribute("data-testid");
+
+        it('snapshot test passed', () => {
             const tree = renderer.create(<Login/>).toJSON();
             expect(tree).toMatchSnapshot();
         });
-    })
+
+    });
+
+    describe('check init state', () => {
+        it('expect correct change state when we fill email', () => {
+            // const {getByTestId} = render(<Login/>);
+            const input = getByTestId('login');
+            fireEvent.change(input, {target: {value: 'My new value'}});
+
+        });
+    });
 });
 
 afterEach(cleanup);

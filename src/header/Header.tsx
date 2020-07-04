@@ -35,6 +35,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                                                 <img className={classes.navLogo} src={logo} alt="Логотип"/>
                                             </Grid>
                                             <Grid
+                                                data-testid="map"
                                                 container
                                                 item
                                                 xs={1}
@@ -42,10 +43,12 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                                                 onClick={() => consumer.navigate("map")}
                                             >Карта</Grid>
                                             <Grid
+                                                data-testid="profile"
                                                 item xs={1}
                                                 onClick={() => consumer.navigate("profile")}
                                             >Профиль</Grid>
                                             <Grid
+                                                data-testid="logout"
                                                 item
                                                 xs={1}
                                                 onClick={() => auth.logout()}

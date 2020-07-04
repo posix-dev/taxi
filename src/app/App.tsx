@@ -27,20 +27,10 @@ const theme = createMuiTheme({
 });
 
 class App extends React.PureComponent {
-    state = {currentPage: "login", isLoggedIn: false};
+    state = {currentPage: "login"};
 
     navigateTo = (page: String) => {
         this.setState({currentPage: page});
-    };
-
-    login = (email: String, password: String) => {
-        this.navigateTo("map");
-        this.setState({isLoggedIn: true});
-    };
-
-    logout = () => {
-        this.setState({isLoggedIn: false});
-        this.navigateTo("login");
     };
 
     render(): React.ReactElement {
@@ -51,12 +41,8 @@ class App extends React.PureComponent {
                 <main>
                     <section>
                         <NavigateProvider value={{navigate: this.navigateTo}}>
-                            <AuthProvider value={{
-                                logout: this.logout,
-                                login: this.login,
-                                isLoggedIn: this.state.isLoggedIn
-                            }}>
-                                <Page/>
+                            <AuthProvider navigate={this.navigateTo}>
+                                <Page />
                             </AuthProvider>
                         </NavigateProvider>
                     </section>

@@ -33,7 +33,6 @@ const Map: React.FC<MapProps> = React.memo(function Map() {
             accessToken: settings.map.API_KEY,
         });
 
-        console.dir(`${mapState.defZoom}`)
     });
 
     return (
