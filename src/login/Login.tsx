@@ -82,15 +82,16 @@ class Login extends React.Component<LoginProps, LoginState> {
                                             </Typography>
                                             <form autoComplete="off">
                                                 <TextField
-                                                    inputProps={{style: {fontSize: 18}}}
+                                                    inputProps={{style: {fontSize: 18}, "data-testid":"login"}}
                                                     InputLabelProps={{style: {fontSize: 18}}}
                                                     fullWidth
                                                     id="login"
-                                                    data-testid="login"
+                                                    // data-testid="login"
                                                     color="secondary"
                                                     label="Имя пользователя"
                                                     required
                                                     onChange={this.handleChangeName}
+                                                    value={this.state.name}
                                                     name={"login"}/>
                                                 <br/>
                                                 <div style={{marginTop: 28}}/>

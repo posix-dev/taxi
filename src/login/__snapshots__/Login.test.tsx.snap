@@ -97,6 +97,7 @@ exports[`Login init renders correctly snapshot test passed 1`] = `
                   }
                 }
                 type="text"
+                value=""
               />
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.sass';
 import Login from "../login/Login";
 import Map from "../map/Map";
@@ -26,30 +26,29 @@ const theme = createMuiTheme({
     },
 });
 
-class App extends React.PureComponent {
-    state = {currentPage: "login"};
+const defaultState = {
+    currentPage: "login"
+};
 
-    navigateTo = (page: String) => {
-        this.setState({currentPage: page});
-    };
+const App: React.FC = () => {
+    const [mapState, setMapState] = useState(defaultState);
+    const Page = PAGES[mapState.currentPage];
 
-    render(): React.ReactElement {
-        const Page = PAGES[this.state.currentPage];
+    const navigateTo = (page: string) => setMapState({currentPage: page});
 
-        return (
-            <MuiThemeProvider theme={theme}>
-                <main>
-                    <section>
-                        <NavigateProvider value={{navigate: this.navigateTo}}>
-                            <AuthProvider navigate={this.navigateTo}>
-                                <Page />
-                            </AuthProvider>
-                        </NavigateProvider>
-                    </section>
-                </main>
-            </MuiThemeProvider>
-        )
-    }
-}
+    return (
+        <MuiThemeProvider theme={theme}>
+            <main>
+                <section>
+                    <NavigateProvider value={{navigate: navigateTo}}>
+                        <AuthProvider navigate={navigateTo}>
+                            <Page/>
+                        </AuthProvider>
+                    </NavigateProvider>
+                </section>
+            </main>
+        </MuiThemeProvider>
+    );
+};
 
 export default App;

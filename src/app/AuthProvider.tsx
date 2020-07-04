@@ -18,7 +18,7 @@ interface IProps {
 
 export const AuthProvider = ({children, navigate}: IProps) => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const login = () => {
+    const login = (email: string, password: string) => {
         setIsLoggedIn(true);
         navigate("map");
     };

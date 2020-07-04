@@ -1,12 +1,11 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {render, cleanup, fireEvent, getAllByTestId} from '@testing-library/react';
+import renderer, {act} from 'react-test-renderer';
+import {render, cleanup, fireEvent} from '@testing-library/react';
 import Login from './Login';
 
 describe('Login', () => {
-    const {getByTestId, getByText} = render(<Login/>);
+    const {getByTestId} = render(<Login/>);
     describe('init renders correctly', () => {
-
         expect(getByTestId('login')).toHaveTextContent("Имя пользователя");
         expect(getByTestId('myPassword')).toHaveTextContent("Пароль");
         expect(getByTestId('loginSubmit')).toBeTruthy();
@@ -16,15 +15,17 @@ describe('Login', () => {
             const tree = renderer.create(<Login/>).toJSON();
             expect(tree).toMatchSnapshot();
         });
-
     });
 
     describe('check init state', () => {
         it('expect correct change state when we fill email', () => {
-            // const {getByTestId} = render(<Login/>);
+            const mockedFunction = jest.fn();
             const input = getByTestId('login');
-            fireEvent.change(input, {target: {value: 'My new value'}});
-
+            input.onchange = mockedFunction;
+            act(() => {
+                fireEvent.change(input, {target: {value: 'My new value'}});
+            });
+            expect(mockedFunction).toHaveBeenCalled();
         });
     });
 });
