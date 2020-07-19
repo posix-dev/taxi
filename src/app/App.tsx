@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.sass';
 import Login from "../login/Login";
 import Map from "../map/Map";
@@ -7,6 +7,8 @@ import yellow from "@material-ui/core/colors/yellow";
 import grey from "@material-ui/core/colors/grey";
 import Registration from "../registration/Registration";
 import Profile from "../profile/Profile";
+import {NavigateProvider} from "./NavigateContext"
+import {AuthProvider} from "./AuthProvider"
 
 const PAGES: any = {
     login: Login,
@@ -24,26 +26,29 @@ const theme = createMuiTheme({
     },
 });
 
-class App extends React.Component {
-    state = {currentPage: "map"};
+const defaultState = {
+    currentPage: "login"
+};
 
-    navigateTo = (page: String) => {
-        this.setState({currentPage: page})
-    };
+const App: React.FC = () => {
+    const [mapState, setMapState] = useState(defaultState);
+    const Page = PAGES[mapState.currentPage];
 
-    render(): React.ReactElement {
-        const Page = PAGES[this.state.currentPage];
+    const navigateTo = (page: string) => setMapState({currentPage: page});
 
-        return (
-            <MuiThemeProvider theme={theme}>
-                <main>
-                    <section>
-                        <Page navigate={this.navigateTo}/>
-                    </section>
-                </main>
-            </MuiThemeProvider>
-        )
-    }
-}
+    return (
+        <MuiThemeProvider theme={theme}>
+            <main>
+                <section>
+                    <NavigateProvider value={{navigate: navigateTo}}>
+                        <AuthProvider navigate={navigateTo}>
+                            <Page/>
+                        </AuthProvider>
+                    </NavigateProvider>
+                </section>
+            </main>
+        </MuiThemeProvider>
+    );
+};
 
 export default App;
