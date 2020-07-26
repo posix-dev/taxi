@@ -1,18 +1,19 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import {Route, Redirect} from "react-router-dom";
+import {connect} from "react-redux";
+import {isAuthorized} from "../../modules/Auth";
 
-export const PrivateRoute = null;/*connect((state) => ({
-    isLoggedIn: state.auth.isLoggedIn,
-}))(({ component: Component, isLoggedIn,...rest }) => (
+export const PrivateRoute = connect((state) => ({
+    isAuthorized: isAuthorized(state),
+}))(({component: Component, isLoggedIn, ...rest}: any) => (
     <Route
         {...rest}
         render={(props) =>
             isLoggedIn ? (
                 <Component {...props} />
             ) : (
-                <Redirect to="/" />
+                <Redirect to="/"/>
             )
         }
     />
-));*/
+));

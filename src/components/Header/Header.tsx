@@ -4,15 +4,22 @@ import {Grid} from '@material-ui/core';
 import {AuthConsumer} from "../App/AuthProvider";
 import {useStyles} from "./useStyles"
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {isAuthorized, logOut} from "../../modules/Auth";
 
 interface HeaderProps {
+    isAuthorized: boolean,
+    logOut: any
 }
 
 interface HeaderState {
 }
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
     const classes: any = useStyles();
+    const {isAuthorized, logOut} = props;
+
+    const handelLogout = () => logOut();
 
     return (
         <AuthConsumer>
@@ -45,9 +52,9 @@ const Header: React.FC<HeaderProps> = () => {
                                     data-testid="logout"
                                     item
                                     xs={1}
-                                    // onClick={() => auth.logout()}
+                                    onClick={handelLogout}
                                 >
-                                    <Link to="/login">{!auth.isLoggedIn ? "Войти" : "Выйти"}</Link>
+                                    <Link to="/login">{!isAuthorized ? "Войти" : "Выйти"}</Link>
                                 </Grid>
                             </Grid>
                         </div>
@@ -58,4 +65,9 @@ const Header: React.FC<HeaderProps> = () => {
     )
 };
 
-export default Header;
+export default connect(
+    state => ({
+        isAuthorized: isAuthorized(state)
+    }),
+    {logOut}
+)(Header);

@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl";
 import Header from "../Header/Header";
 import settings from "../../constants/settings";
 import {useStyles} from "./useStyles";
+import {connect} from "react-redux";
 
 interface MapProps {
 
@@ -12,13 +13,13 @@ interface MapState {
 
 }
 
-const defaultState = {
-    defCenter: [30.2656504, 59.8029126],
-    defZoom: 15
-};
+// const defaultState = {
+//     defCenter: [30.2656504, 59.8029126],
+//     defZoom: 15
+// };
 
 const Map: React.FC<MapProps> = () => {
-    const [mapState, setMapState] = useState(defaultState);
+    // const [mapState, setMapState] = useState(defaultState);
     const classes = useStyles();
     const mapContainer: React.RefObject<HTMLDivElement> = useRef(null);
 
@@ -43,4 +44,4 @@ const Map: React.FC<MapProps> = () => {
     );
 };
 
-export default Map;
+export default connect()(Map);

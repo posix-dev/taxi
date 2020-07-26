@@ -24,7 +24,7 @@ export const AuthProvider = (children: IProps) => {
         setIsLoggedIn(false);
     };
     return (
-        <AuthContext.Provider value={{isLoggedIn, login, logout}}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{isLoggedIn, username: login, logout}}>{children}</AuthContext.Provider>
     );
 };
 

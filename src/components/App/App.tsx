@@ -5,6 +5,8 @@ import yellow from "@material-ui/core/colors/yellow";
 import grey from "@material-ui/core/colors/grey";
 import {BrowserRouter} from "react-router-dom";
 import Router from "../Router";
+import {Provider} from "react-redux";
+import {createMainStore} from "../../store";
 
 const theme = createMuiTheme({
     palette: {
@@ -18,13 +20,15 @@ const theme = createMuiTheme({
 const App: React.FC = () => {
     return (
         <MuiThemeProvider theme={theme}>
-            <main>
-                <section>
-                    <BrowserRouter>
-                        <Router/>
-                    </BrowserRouter>
-                </section>
-            </main>
+            <Provider store={createMainStore()}>
+                <main>
+                    <section>
+                        <BrowserRouter>
+                            <Router/>
+                        </BrowserRouter>
+                    </section>
+                </main>
+            </Provider>
         </MuiThemeProvider>
     );
 };
