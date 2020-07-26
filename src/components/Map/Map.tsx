@@ -1,7 +1,7 @@
 import React, {useLayoutEffect, useRef, useState} from 'react';
 import mapboxgl from "mapbox-gl";
-import Header from "../header/Header";
-import settings from "../constants/settings";
+import Header from "../Header/Header";
+import settings from "../../constants/settings";
 import {useStyles} from "./useStyles";
 
 interface MapProps {

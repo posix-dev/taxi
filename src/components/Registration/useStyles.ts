@@ -1,23 +1,26 @@
 import {createStyles} from "@material-ui/core";
-import background from "../background.png";
+import background from "../../background.png";
 
 export const useStyles = createStyles({
-    loginFormWrapper: {
+    registrationWrapper: {
         backgroundImage: `url(${background})`,
         height: 790
     },
-    loginForm: {
+    registrationFormWrapper: {
         paddingLeft: 24,
         paddingRight: 24,
         paddingTop: 48
     },
-    loginRegistrationLink: {
+    registrationLoginLink: {
         fontSize: 14,
         textDecoration: "underline",
         color: "blue",
         cursor: "pointer"
     },
-    loginSubmitBtn: {
+    registrationIndent: {
+        marginTop: 28
+    },
+    registrationBtnSubmit: {
         marginTop: 36,
         marginBottom: 48,
         minWidth: 160,

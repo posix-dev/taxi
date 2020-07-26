@@ -12,19 +12,16 @@ export const withAuth = (Component: string) => (props: ReactPropTypes) => (
 );
 
 interface IProps {
-    children: ReactNode,
-    navigate: (page: string) => void
+    children: ReactNode
 }
 
-export const AuthProvider = ({children, navigate}: IProps) => {
+export const AuthProvider = (children: IProps) => {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
     const login = (email: string, password: string) => {
         setIsLoggedIn(true);
-        navigate("map");
     };
     const logout = () => {
         setIsLoggedIn(false);
-        navigate("login");
     };
     return (
         <AuthContext.Provider value={{isLoggedIn, login, logout}}>{children}</AuthContext.Provider>

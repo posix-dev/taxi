@@ -10,7 +10,7 @@ describe('AuthContext', () => {
         let login: Function;
 
         render(
-            <AuthProvider navigate={() => null}>
+            <AuthProvider>
                 <AuthContext.Consumer>
                     {(value) => {
                         isLoggedIn = value.isLoggedIn;
@@ -35,7 +35,7 @@ describe('AuthContext', () => {
         };
 
         render(
-            <AuthProvider navigate={(page: string) => navigateFunc(page)}>
+            <AuthProvider>
                 <AuthContext.Consumer>
                     {(value) => {
                         isLoggedIn = value.isLoggedIn; //если ставить true, он всегда будет в true
