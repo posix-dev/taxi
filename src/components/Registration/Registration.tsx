@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {useStyles} from "./useStyles"
 import AuthContext, {AuthConsumer} from "../App/AuthProvider";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {authRequest, getErrors, isAuthorized, isLoading, registrationRequest} from "../../modules/Auth";
 
@@ -13,6 +13,7 @@ interface RegistrationProps {
     classes: any,
     registrationRequest: any,
     isLoading: boolean,
+    isAuthorized: boolean,
     authError: string
 }
 
@@ -65,9 +66,11 @@ class Registration extends React.Component<RegistrationProps, RegistrationState>
     }
 
     render(): React.ReactElement {
-        const {classes, isLoading, authError} = this.props;
+        const {classes, isLoading, isAuthorized, authError} = this.props;
 
-        return (
+        return isAuthorized ? (
+            <Redirect to="/map"/>
+        ) : (
             <Grid className={classes.registrationWrapper} container>
                 <Grid xs={7} alignItems={"center"} container item justify={"center"}>
                     <img src={logo} alt="Логотип компании"/>
@@ -168,6 +171,7 @@ class Registration extends React.Component<RegistrationProps, RegistrationState>
 
 export default connect(
     state => ({
+        isAuthorized: isAuthorized(state),
         authError: getErrors(state),
         isLoading: isLoading(state)
     }),
