@@ -1,3 +1,4 @@
-export const isAuthorized = (state: any) => state.isAuthorized;
-export const getErrors = (state: any) => state.authError;
-export const isLoading = (state: any) => state.isLoading;
+export const isAuthorized = (state: any) => state.auth.isAuthorized;
+export const getErrors = (state: any) => state.auth.authError;
+export const isLoading = (state: any) => state.auth.isLoading;
+export const getToken = (state: any) => state.auth.token;

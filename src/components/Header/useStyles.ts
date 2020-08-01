@@ -11,6 +11,10 @@ export const useStyles = makeStyles({
         height: "8rem",
         padding: "0 1.6rem",
         fontSize: "1.6rem"
+    },
+    links: {
+        textDecoration: "none",
+        color: "#000000"
     }
 });
 

@@ -28,4 +28,12 @@ const authError = handleActions(
     ""
 );
 
-export default combineReducers({isAuthorized, isLoading, authError});
+const token = handleActions(
+    {
+        [authSuccess.toString()]: (_state, action) => action.payload,
+        [logOut.toString()]: () => ""
+    },
+    ""
+);
+
+export default combineReducers({isAuthorized, isLoading, authError, token});

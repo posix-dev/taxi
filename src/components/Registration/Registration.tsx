@@ -4,10 +4,9 @@ import {Box, Button, Card, Grid, TextField, withStyles} from "@material-ui/core"
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {useStyles} from "./useStyles"
-import AuthContext, {AuthConsumer} from "../App/AuthProvider";
 import {Link, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {authRequest, getErrors, isAuthorized, isLoading, registrationRequest} from "../../modules/Auth";
+import {getErrors, isAuthorized, isLoading, registrationRequest} from "../../modules/Auth";
 
 interface RegistrationProps {
     classes: any,
@@ -25,7 +24,6 @@ interface RegistrationState {
 }
 
 class Registration extends React.Component<RegistrationProps, RegistrationState> {
-    static contextType = AuthContext;
 
     constructor(props: RegistrationProps) {
         super(props);
