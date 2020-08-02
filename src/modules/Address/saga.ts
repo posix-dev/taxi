@@ -3,10 +3,10 @@ import {getAddressList} from '../../api'
 import {call, fork, put, takeLatest} from "redux-saga/effects";
 
 function* addressWatcher() {
-    yield takeLatest(getAddressListRequest, getAddressListFlow);
+    yield takeLatest(getAddressListRequest, fetchGetAddressList);
 }
 
-export function* getAddressListFlow() {
+export function* fetchGetAddressList() {
     const {addresses} = yield call(getAddressList);
 
     if (addresses) {

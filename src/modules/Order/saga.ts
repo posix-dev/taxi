@@ -3,10 +3,10 @@ import {getRoute} from '../../api'
 import {call, fork, put, takeLatest} from "redux-saga/effects";
 
 function* orderWatcher() {
-    yield takeLatest(getRouteRequest, getRouteFlow);
+    yield takeLatest(getRouteRequest, fetchGetRoute);
 }
 
-export function* getRouteFlow(action: any) {
+export function* fetchGetRoute(action: any) {
     const {from, to} = action.payload;
     const array = yield call(getRoute, from, to);
 

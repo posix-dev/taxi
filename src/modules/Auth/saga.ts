@@ -3,11 +3,11 @@ import {serverLogIn, serverRegistration} from '../../api'
 import {takeLatest, put, call, fork} from "redux-saga/effects";
 
 function* authWatcher() {
-    yield takeLatest(authRequest, loginFlow);
-    yield takeLatest(registrationRequest, registrationFlow);
+    yield takeLatest(authRequest, fetchLogin);
+    yield takeLatest(registrationRequest, fetchRegister);
 }
 
-export function* loginFlow(action: any) {
+export function* fetchLogin(action: any) {
     const {login, password} = action.payload;
     const {success, error, token} = yield call(serverLogIn, login, password);
 
@@ -18,7 +18,7 @@ export function* loginFlow(action: any) {
     }
 }
 
-export function* registrationFlow(action: any) {
+export function* fetchRegister(action: any) {
     const {email, password, name, surname} = action.payload;
     const {success, error, token} = yield call(serverRegistration, email, password, name, surname);
 

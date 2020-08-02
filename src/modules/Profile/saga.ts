@@ -3,10 +3,10 @@ import {sendCard} from '../../api'
 import {call, fork, put, takeLatest} from "redux-saga/effects";
 
 function* profileWatcher() {
-    yield takeLatest(profileSubmitRequest, profileSubmitFlow);
+    yield takeLatest(profileSubmitRequest, fetchProfileSubmit);
 }
 
-export function* profileSubmitFlow(action: any) {
+export function* fetchProfileSubmit(action: any) {
     const {name, date, card, cvv, token} = action.payload;
     const {success, error} = yield call(sendCard, name, date, card, cvv, token);
 
