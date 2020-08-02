@@ -1,5 +1,5 @@
-import reducer from "./reducer";
-import {authRequest, authSuccess, authFailure, logOut} from "./actions";
+import reducer from "../reducer";
+import {authRequest, authSuccess, authFailure, logOut} from "../actions";
 
 const randomAction: any = {
     type: null

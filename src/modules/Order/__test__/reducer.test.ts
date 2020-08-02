@@ -1,5 +1,5 @@
-import reducer from "./reducer";
-import {getRouteRequest, getRouteSuccess, getRouteFailure, clearRoute} from "./actions";
+import reducer from "../reducer";
+import {getRouteRequest, getRouteSuccess, getRouteFailure, clearRoute} from "../actions";
 
 const randomAction: any = {
     type: null

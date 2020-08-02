@@ -1,5 +1,5 @@
-import reducer from "./reducer";
-import {profileSubmitRequest, sendCardSuccess, sendCardFailure} from "./actions";
+import reducer from "../reducer";
+import {profileSubmitRequest, sendCardSuccess, sendCardFailure} from "../actions";
 
 const randomAction: any = {
     type: null

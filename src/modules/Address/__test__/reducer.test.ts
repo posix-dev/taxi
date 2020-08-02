@@ -1,5 +1,5 @@
-import reducer from "./reducer";
-import {getAddressListRequest, getAddressListSuccess, getAddressListFailure} from "./actions";
+import reducer from "../reducer";
+import {getAddressListRequest, getAddressListSuccess, getAddressListFailure} from "../actions";
 
 const randomAction: any = {
     type: null

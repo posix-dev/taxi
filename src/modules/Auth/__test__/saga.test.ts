@@ -1,8 +1,8 @@
-import authSaga, {fetchLogin} from "./saga";
-import {recordSaga} from "../../recordSaga";
-import {authFailure, authRequest, authSuccess} from "./actions";
-import * as api from '../../api';
-import {serverLogIn} from "../../api";
+import authSaga, {fetchLogin} from "../saga";
+import {recordSaga} from "../../../recordSaga";
+import {authFailure, authRequest, authSuccess} from "../actions";
+import * as api from '../../../api';
+import {serverLogIn} from "../../../api";
 
 jest.mock("../../api", () => ({serverLogIn: jest.fn(() => true)}));
 jest.mock("../../api", () => ({serverRegistration: jest.fn(() => true)}));
