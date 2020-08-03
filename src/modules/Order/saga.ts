@@ -11,7 +11,6 @@ export function* fetchGetRoute(action: any) {
     const array = yield call(getRoute, from, to);
 
     if (array) {
-        const array = yield call(getRoute, from, to);
         yield put(getRouteSuccess(array));
     } else {
         yield put(getRouteFailure());
