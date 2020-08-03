@@ -9,7 +9,7 @@ export const recordSaga = async (saga: any, initialAction: any = null) => {
         },
         saga,
         initialAction
-    ).done;
+    );
 
     return dispatched;
 };

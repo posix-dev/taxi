@@ -1,11 +1,13 @@
 import authSaga, {fetchLogin} from "../saga";
 import {recordSaga} from "../../../recordSaga";
 import {authFailure, authRequest, authSuccess} from "../actions";
-import * as api from '../../../api';
-import {serverLogIn} from "../../../api";
+import {serverLogIn, serverRegistration} from "../../../api";
+import * as api from "../../../api";
 
-jest.mock("../../api", () => ({serverLogIn: jest.fn(() => true)}));
-jest.mock("../../api", () => ({serverRegistration: jest.fn(() => true)}));
+jest.mock("../../../api", () => ({
+    serverLogIn: jest.fn(() => true),
+    serverRegistration: jest.fn(() => true)
+}));
 
 describe("auth saga", () => {
     beforeEach(() => jest.resetAllMocks());
@@ -22,13 +24,9 @@ describe("auth saga", () => {
                 error: "",
                 token: someToken
             };
-            // const loginRequest = jest.mock("../../api", () => ({serverLogIn: jest.fn(() => true)}));
-            /*jest.spyOn(api, 'serverLogIn')
-                .mockImplementation(() => Promise.resolve(data));*/
-            const dispatched = await recordSaga(authSaga, authRequest(payload));
-
-            expect(serverLogIn).toHaveBeenCalled();
-            expect(dispatched).toEqual([{type: authSuccess.toString()}]);
+            const dispatched = await recordSaga(fetchLogin, authRequest(payload));
+            expect(serverLogIn).toHaveBeenCalledTimes(1);
+            expect(dispatched).toEqual(authSuccess(data.token));
         });
     });
 });
