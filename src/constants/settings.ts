@@ -6,7 +6,7 @@ export default {
         style: "mapbox://styles/mapbox/streets-v11",
         defCenter: [30.2656504, 59.8029126],
         defZoom: 15,
-        lineColor: "#c2423a",
+        lineColor: "#ffc617",
         lineWidth: 8
     }
 };
